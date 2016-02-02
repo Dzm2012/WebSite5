@@ -5,7 +5,7 @@
 <script src="BootStrap/bootstrap.js"></script>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Game Related .Info</title>
+    <title>Pinnapplez</title>
     
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -14,7 +14,7 @@
     
     <%--<center><img src="http://previews.123rf.com/images/corund/corund1309/corund130900603/22214262-Welcome-Banner-clipping-path-included--Stock-Photo-sign.jpg" height="150px"></center>--%>
     <form id="form1" runat="server">
-    <div style="margin:2%; background-color:darkgray; min-height:500px;" >
+    <div style="border-radius: 15px; margin:2%; background-color:darkgray; min-height:500px;" >
        
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         

@@ -11,10 +11,10 @@
             if(side)
             {
                  html = "<br />" +
-    "<div style=\"border:medium; border-color:black; width:85%; min-height:200px; background-color:azure; margin-left:2%;\">" +
-                "<span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>" +
+    "<div style=\"border-radius: 25px; border:medium; border-color:black; width:85%; min-height:200px; background-color:azure; margin-left:2%;\">" +
+                "<span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\" style=\"margin-left:1%; margin-right:5%; margin-top:1%;\"></span>" +
                 "<br />" +
-                "<div style=\"font-size:14px; margin-left:5%; margin-right:auto;\">" +
+                "<div style=\"font-size:14px; margin-left:5%; margin-right:5%;\">" +
                     "<b>" +
                 lat +
                     "</b>" +
@@ -25,10 +25,10 @@
             else
             {
                 html = "<br />" +
-    "<div style=\"border:medium; border-color:black; width:85%; min-height:200px; background-color:azure; margin-left:auto; margin-right:5%;\" align=\"right\">" +
-                "<span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\"></span>" +
+    "<div style=\"border-radius: 25px; border:medium; border-color:black; width:85%; min-height:200px; background-color:azure; margin-left:auto; margin-right:2%;\" align=\"right\">" +
+                "<span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\" style=\"margin-left:5%; margin-right:1%; margin-top:1%;\"></span>" +
                 "<br />" +
-                "<div style=\"font-size:14px; margin-left:auto; margin-right:5%;\">" +
+                "<div style=\"font-size:14px; margin-left:5%; margin-right:5%;\">" +
                     "<b>" +
                 lat +
                     "</b>" +
