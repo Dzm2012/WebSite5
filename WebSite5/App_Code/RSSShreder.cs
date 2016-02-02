@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml;
 
@@ -24,7 +25,34 @@ public class RSSShreder
 
             feed.Title = reader.SelectSingleNode("//title").InnerText;
             feed.Link = reader.SelectSingleNode("//link").InnerText;
-            feed.Description = reader.SelectSingleNode("//description").InnerText;
+            
+            string date = reader.SelectSingleNode("//pubDate").InnerText;
+            feed.PubDate = Convert.ToDateTime(date.Split(',')[0]);
+
+            string descriptionText = reader.SelectSingleNode("//description").InnerText;
+            if (descriptionText.Contains("img src="))
+            {
+                descriptionText = descriptionText.Replace("&lt;", "<");
+                descriptionText = descriptionText.Replace("&gt;", ">");
+                feed.Image = "<img" + descriptionText.Split(new string[] { "<img" }, StringSplitOptions.None)[1].Split(new string[] { ">" }, StringSplitOptions.None)[0]+">";
+                bool remove = false;
+                for(int i =0;i< descriptionText.Length;i++)
+                {
+                    if(descriptionText[i]=='<'&& descriptionText[i+1] == 'i'&& descriptionText[i+2] == 'm' && descriptionText[i+3] == 'g')
+                    {
+                        remove = true;
+                        descriptionText = descriptionText.Remove(i, 1);
+                        while(remove)
+                        {
+                            if (descriptionText[i] == '>')
+                                remove = false;
+                            descriptionText = descriptionText.Remove(i, 1);
+                        }
+                    }
+                }
+            }
+
+            feed.Description = descriptionText;
             items.Add(feed);
         }
     }
