@@ -11,7 +11,7 @@ using System.Xml;
 public class RSSShreder
 {
     public List<FeedDeffinition> items = new List<FeedDeffinition>();
-    public RSSShreder(string rssfeedUrl)
+    public RSSShreder(string rssfeedUrl, int timeOffSet)
     {
         XmlDocument doc = new XmlDocument();
         doc.Load(rssfeedUrl);
@@ -29,7 +29,7 @@ public class RSSShreder
             var yearReg = "(20[0-9][0-9]|20[0-9][0-9])";            //< Allows a number between 2014 and 2029
             var monthReg = "(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)";               //< Allows a number between 00 and 12
             var dayReg = "([1-9]|0[1-9]|1[0-9]|2[0-9]|3[0-1])";   //< Allows a number between 00 and 31
-            var hourReg = "([0-1][0-9]|2[0-3])";            //< Allows a number between 00 and 24
+            var hourReg = "([0-1][0-9]|2[0-4])";            //< Allows a number between 00 and 24
             var minReg = "([0-5][0-9])";                    //< Allows a number between 00 and 59
             var reg = new Regex(dayReg+"\\s"+monthReg+ "\\s" + yearReg+ "\\s" + hourReg + ':' +minReg + ':'+minReg);
             string date = reader.SelectSingleNode("//pubDate").InnerText;
@@ -38,11 +38,15 @@ public class RSSShreder
             try
             {
                 time = DateTime.Parse(output);
+                
             }
             catch
             {
-
+                reg = new Regex(dayReg + "\\s" + monthReg + "\\s" + yearReg);
+                output = reg.Match(output).ToString();
+                time = DateTime.Parse(output);
             }
+            time=time.Add(new TimeSpan(timeOffSet, 0,0));
             feed.PubDate = time;
 
             string descriptionText = reader.SelectSingleNode("//description").InnerText;
@@ -50,7 +54,7 @@ public class RSSShreder
             {
                 descriptionText = descriptionText.Replace("&lt;", "<");
                 descriptionText = descriptionText.Replace("&gt;", ">");
-                feed.Image = "<img" + descriptionText.Split(new string[] { "<img" }, StringSplitOptions.None)[1].Split(new string[] { ">" }, StringSplitOptions.None)[0]+">";
+                feed.Image = "<img style=\"min-width: 200px; max-width: 500px; height: auto;\"" + descriptionText.Split(new string[] { "<img" }, StringSplitOptions.None)[1].Split(new string[] { ">" }, StringSplitOptions.None)[0]+">";
                 bool remove = false;
                 for(int i =0;i< descriptionText.Length;i++)
                 {

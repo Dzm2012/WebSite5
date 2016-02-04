@@ -13,10 +13,12 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         
-        Feeds.Add(new RSSShreder(@"https://www.realwire.com/rss/?id=183&row=&view=Synopsis"));
-        Feeds.Add(new RSSShreder(@"https://www.realwire.com/rss/?id=184&row=&view=Synopsis"));
-        Feeds.Add(new RSSShreder(@"http://feeds.feedburner.com/GamasutraNews"));
-        
+        Feeds.Add(new RSSShreder(@"https://www.realwire.com/rss/?id=183&row=&view=Synopsis", 0));
+        Feeds.Add(new RSSShreder(@"https://www.realwire.com/rss/?id=184&row=&view=Synopsis", 0));
+        Feeds.Add(new RSSShreder(@"http://feeds.feedburner.com/GamasutraNews", 0));
+        Feeds.Add(new RSSShreder(@"http://us.blizzard.com/en-us/news/rss.xml", -3));
+        Feeds.Add(new RSSShreder(@"http://feeds.ign.com/ign/all",-5));
+
         d.Add(Feeds[0].items[0]);
         Feeds[0].items.Remove(Feeds[0].items[0]);
         foreach (var Feed in Feeds)
