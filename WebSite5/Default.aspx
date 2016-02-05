@@ -2,12 +2,18 @@
 
 <asp:Content ContentPlaceHolderID="header" runat="server">
 <div class="redditContent">
-    <div style="min-height:200px;min-width:50px; background-color:azure; border-radius: 25px;">your content</div>
-    <div style="min-height:200px;min-width:50px; background-color:azure; border-radius: 25px;">your content</div>
-    <div style="min-height:200px;min-width:50px; background-color:azure; border-radius: 25px;">your content</div>
-    <div style="min-height:200px;min-width:50px; background-color:azure; border-radius: 25px;">your content</div>
-    <div style="min-height:200px;min-width:50px; background-color:azure; border-radius: 25px;">your content</div>
-    <div style="min-height:200px;min-width:50px; background-color:azure; border-radius: 25px;">your content</div>
+    <div style="width:150px; height:250px; margin:auto;">
+        <div style="width:70%; height:250px; background-color:azure; border-radius: 25px; margin:auto;">
+            <span style="margin-left:5%;">Title</span><br />
+            <span style="margin-left:5%;">Content</span><br />
+            <span style="margin-right:5%; float:right; vertical-align:bottom; position: absolute;bottom: 0;right:500px;">Author</span>
+        </div>
+    </div>
+    <div style="width:150px; margin:auto;"><div style="width:70%; background-color:azure; border-radius: 25px; margin:auto;">your content</div></div>
+    <div style="width:150px; margin:auto;"><div style="width:70%; background-color:azure; border-radius: 25px; margin:auto;">your content</div></div>
+    <div style="width:150px; margin:auto;"><div style="width:70%; background-color:azure; border-radius: 25px; margin:auto;">your content</div></div>
+    <div style="width:150px; margin:auto;"><div style="width:70%; background-color:azure; border-radius: 25px; margin:auto;">your content</div></div>
+    <div style="width:150px; margin:auto;"><div style="width:70%; background-color:azure; border-radius: 25px; margin:auto;">your content</div></div>
   </div>
 
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -20,7 +26,6 @@
         $(document).ready(function(){
             $('.redditContent').slick({
                 autoplay: true,
-                lazyLoad: 'ondemand',
                 slidesToShow: 3,
                 slidesToScroll: 1
             });
