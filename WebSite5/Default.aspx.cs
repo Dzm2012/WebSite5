@@ -35,7 +35,10 @@ public partial class _Default : System.Web.UI.Page
                     }
                 }
                 if (!d.Contains(Feed.items[i]))
-                    d.Add(Feed.items[i]);
+                    if(!checkItemDescription(Feed.items[i].Description))
+                        d.Add(Feed.items[i]);
+                
+                
             }
         }
     }
@@ -46,5 +49,15 @@ public partial class _Default : System.Web.UI.Page
         {
             d[i + 1] = d[i];
         }
+    }
+
+    public bool checkItemDescription(string description)
+    {
+        foreach (var item in d)
+        {
+            if (item.Description.Equals(description))
+                return true;
+        }
+        return false;
     }
 }

@@ -2,18 +2,28 @@
 
 <!DOCTYPE html>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<link href="StyleSheet.css" rel="stylesheet" />
 <script src="BootStrap/bootstrap.js"></script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Pinnapplez</title>
-    
+    <link rel="stylesheet" type="text/css" href="slick-1.5.9/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick-1.5.9/slick/slick-theme.css"/>
     <asp:ContentPlaceHolder id="head" runat="server">
+
     </asp:ContentPlaceHolder>
 </head>
 <body style="background-color:gray;">
     
     <%--<center><img src="http://previews.123rf.com/images/corund/corund1309/corund130900603/22214262-Welcome-Banner-clipping-path-included--Stock-Photo-sign.jpg" height="150px"></center>--%>
     <form id="form1" runat="server">
+    <asp:ContentPlaceHolder id="header" runat="server">
+        
+        </asp:ContentPlaceHolder>
+
+
+    
     <div style="border-radius: 15px; margin:2%; background-color:darkgray; min-height:500px;" >
        
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
