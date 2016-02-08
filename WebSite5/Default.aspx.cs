@@ -10,7 +10,7 @@ public partial class _Default : System.Web.UI.Page
 {
     public List<RSSShreder> Feeds = new List<RSSShreder>();
     public List<FeedDeffinition> d = new List<FeedDeffinition>();
-    public RedditShredder rs;
+    public List<RedditShredder> rss= new List<RedditShredder>();
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -19,7 +19,8 @@ public partial class _Default : System.Web.UI.Page
         Feeds.Add(new RSSShreder(@"http://feeds.feedburner.com/GamasutraNews", 0));
         Feeds.Add(new RSSShreder(@"http://us.blizzard.com/en-us/news/rss.xml", -3));
         Feeds.Add(new RSSShreder(@"http://feeds.ign.com/ign/all",-5));
-        rs = new RedditShredder(@"https://www.reddit.com/r/gaming/.rss");
+        RedditShredder rs = new RedditShredder(@"https://www.reddit.com/r/gaming/.rss");
+        rss.Add(rs);
         d.Add(Feeds[0].items[0]);
         Feeds[0].items.Remove(Feeds[0].items[0]);
         foreach (var Feed in Feeds)
