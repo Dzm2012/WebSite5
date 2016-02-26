@@ -11,34 +11,70 @@
     <br />
     <form id="form1" runat="server">
         <%
-            for (int i = 0; i < 30; i++)
-            {
-                string html = "<div class=\"col-lg-3\">";
-                html += "<div class=\"scroll\" style=\"width:100%; background-color:#D0CABF; border-radius:25px;\">";
-                html += "<span style=\"margin-left:10px;\">Sample Text</span>";
-                html +=   "<br />";
-                html +=   "<br />";
-                html +=  "</div>";
-                html +=  "</div>";
-                html += "<div class=\"col-lg-3\">";
-                html +=  "<div class=\"scroll\" style=\"width:100%; background-color:#DE8642; border-radius:25px;\">";
-                html +=     "<span style=\"margin-left:10px;\">Sample Text</span>";
-                html +=     "<br />";
-                html +=    "<br />";
-                html += "</div>";
-                html += "</div>";
-                html += "<div class=\"col-lg-6\">";
-                html +=   "<div class=\"scroll\" style=\"width:100%; background-color:#4B4D52; border-radius:25px;\">";
-                html +=      "<span style=\"margin-left:10px; color:antiquewhite;\">Sample Text</span>";
-                html +=       "<br />";
-                html +=      "<br />";
-                html +=   "</div>";
-                html += "</div>";
+            Random color = new Random(DateTime.Now.Millisecond);
+            Random width = new Random(DateTime.Now.Millisecond);
+            int wid = 12;
+            List<string> colors = new List<string>() {"#D0CABF","#DE8642","#4B4D52" };
+            List<string> textColors = new List<string>() {"black","black","antiquewhite" };
+            try {
+                for (int i = 0; i < 30; i++)
+                {
+                    int colorID = color.Next(0, 3);
+                    int widthTemp = width.Next(wid / 6, wid / 2);
+                    if (widthTemp < 3)
+                        widthTemp += 2;
+                    if (widthTemp > 8)
+                        widthTemp -= 2;
+                    wid -= widthTemp;
+                    string html = "<div class=\"col-lg-" + widthTemp + "\">";
+                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[colorID] + "; border-radius:25px;\">";
+                    html += "<span style=\"margin-left:10px; color:" + textColors[colorID] + ";\">Sample Text</span>";
+                    html += "<br />";
+                    html += "<br />";
+                    html += "</div>";
+                    html += "</div>";
+                    colors.Remove(colors[colorID]);
+                    textColors.Remove(textColors[colorID]);
+                    colorID = color.Next(0, colors.Count);
+                    widthTemp = width.Next(wid / 6, wid / 2);
+                    if (widthTemp == 1)
+                        widthTemp += 2;
+                    if (widthTemp > 8)
+                        widthTemp -= 2;
+                    wid -= widthTemp;
 
-                html += "<br />";
-                html += "<br />";
-                html += "<br />";
-                Response.Write(html);
+                    html += "<div class=\"col-lg-" + widthTemp + "\">";
+
+
+
+                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[colorID] + "; border-radius:25px;\">";
+                    html += "<span style=\"margin-left:10px; color:" + textColors[colorID] + ";\">Sample Text</span>";
+                    html += "<br />";
+                    html += "<br />";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "<div class=\"col-lg-" + wid + "\">";
+                    colors.Remove(colors[colorID]);
+                    textColors.Remove(textColors[colorID]);
+
+                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[0] + "; border-radius:25px;\">";
+                    html += "<span style=\"margin-left:10px; color:" + textColors[0] + ";\">Sample Text</span>";
+                    html += "<br />";
+                    html += "<br />";
+                    html += "</div>";
+                    html += "</div>";
+
+                    html += "<br />";
+                    html += "<br />";
+                    html += "<br />";
+                    Response.Write(html);
+                    wid = 12;
+                    colors = new List<string>() { "#D0CABF", "#DE8642", "#4B4D52" };
+                    textColors = new List<string>() { "black", "black", "antiquewhite" };
+                } }
+            catch(Exception e)
+            {
+
             }
         %>
        <%-- <div class="col-lg-3">
