@@ -16,6 +16,11 @@
             int wid = 12;
             List<string> colors = new List<string>() {"#D0CABF","#DE8642","#4B4D52" };
             List<string> textColors = new List<string>() {"black","black","antiquewhite" };
+
+            int redditCounter = 0;
+            int rssCounter = 0;
+
+
             try {
                 for (int i = 0; i < 30; i++)
                 {
@@ -26,9 +31,23 @@
                     if (widthTemp > 8)
                         widthTemp -= 2;
                     wid -= widthTemp;
+                    string content = "";
+                    if(widthTemp>=4)
+                    {
+                        var temp = d[rssCounter];
+                        content = temp.Description;
+                        rssCounter++;
+                    }
+                    else
+                    {
+                        //var temp = Feeds[redditCounter];
+                        content = "Sample Text";
+                        redditCounter++;
+                    }
+
                     string html = "<div class=\"col-lg-" + widthTemp + "\">";
-                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[colorID] + "; border-radius:25px;\">";
-                    html += "<span style=\"margin-left:10px; color:" + textColors[colorID] + ";\">Sample Text</span>";
+                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[colorID] + "; border-radius:25px; margin-bottom:30px;\">";
+                    html += "<span style=\"margin-left:10px; color:" + textColors[colorID] + ";\">"+content+"</span>";
                     html += "<br />";
                     html += "<br />";
                     html += "</div>";
@@ -45,10 +64,21 @@
 
                     html += "<div class=\"col-lg-" + widthTemp + "\">";
 
+                    if(widthTemp>=4)
+                    {
+                        var temp = d[rssCounter];
+                        content = temp.Description;
+                        rssCounter++;
+                    }
+                    else
+                    {
+                        //var temp = Feeds[redditCounter];
+                        content = "Sample Text";
+                        redditCounter++;
+                    }
 
-
-                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[colorID] + "; border-radius:25px;\">";
-                    html += "<span style=\"margin-left:10px; color:" + textColors[colorID] + ";\">Sample Text</span>";
+                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[colorID] + "; border-radius:25px; margin-bottom:30px;\">";
+                    html += "<span style=\"margin-left:10px; color:" + textColors[colorID] + ";\">"+content+"</span>";
                     html += "<br />";
                     html += "<br />";
                     html += "</div>";
@@ -57,8 +87,21 @@
                     colors.Remove(colors[colorID]);
                     textColors.Remove(textColors[colorID]);
 
-                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[0] + "; border-radius:25px;\">";
-                    html += "<span style=\"margin-left:10px; color:" + textColors[0] + ";\">Sample Text</span>";
+                    if(wid>=4)
+                    {
+                        var temp = d[rssCounter];
+                        content = temp.Description;
+                        rssCounter++;
+                    }
+                    else
+                    {
+                        //var temp = Feeds[redditCounter];
+                        content = "Sample Text";
+                        redditCounter++;
+                    }
+
+                    html += "<div class=\"scroll\" style=\"width:100%; background-color:" + colors[0] + "; border-radius:25px; margin-bottom:30px;\">";
+                    html += "<span style=\"margin-left:10px; color:" + textColors[0] + ";\">"+content+"</span>";
                     html += "<br />";
                     html += "<br />";
                     html += "</div>";
