@@ -14,7 +14,7 @@
 
     </asp:ContentPlaceHolder>
 </head>
-<body style="background-color:gray;">
+<body style="background-color:#626266;">
     
     <%--<center><img src="http://previews.123rf.com/images/corund/corund1309/corund130900603/22214262-Welcome-Banner-clipping-path-included--Stock-Photo-sign.jpg" height="150px"></center>--%>
     <form id="form1" runat="server">
@@ -24,7 +24,7 @@
 
 
     
-    <div style="border-radius: 15px; margin:2%; background-color:darkgray; min-height:500px;" >
+    <div style="border-radius: 15px; margin:2%; background-color:#938172; min-height:500px;" >
        
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         

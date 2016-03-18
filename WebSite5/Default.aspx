@@ -10,10 +10,13 @@
                 string html = "";
 
                 html += "<div style=\"width:70%; height:250px; margin:auto;\">";
-                html += "<div style=\"width:70%; height:250px; background-color:azure; border-radius: 25px; margin:auto;\">";
+                html += "<div style=\"width:70%; height:250px; background-color:#FFE7C7; border-radius: 25px; margin:auto;\">";
                 html += "<div style=\"width:100%;margin-right:5%; height:250px;\">";
-                html += "<span style=\"margin-left:5%;\">"+item.PostTitle+"</span><br />";
-                html += "<span style=\"margin-left:5%;\">"+item.PostContent+"</span><br />";
+                if(item.PostTitle.Length>100)
+                    html += "<span style=\"margin-left:5%;\"><b>"+item.PostTitle.Substring(0,100)+"...</b></span><br />";
+                else
+                    html += "<span style=\"margin-left:5%;\"><b>"+item.PostTitle+"</b></span><br />";
+                html += "<span style=\"margin-left:5%;word-wrap: break-word;\">"+item.PostContent+"</span><br />";
                 html += "<span style=\"text-align:right;\"> - "+item.AuthorName+"</span>";
                 html += "</div>";
                 html += "</div>";
@@ -54,15 +57,17 @@
 
     <%
         bool side = false;
-
+        List<string> titles = new List<string>();
         foreach (var item in d)
         {
+            if (titles.Contains(item.Title))
+                continue;
             {
                 string html = "";
                 if (side)
                 {
                     html = "<br />" +
-                    "<div style=\"position: relative; overflow:auto; border-radius: 25px; border:medium; border-color:black; width:85%; min-height:200px; background-color:azure; margin-left:2%;\">" +
+                    "<div style=\"position: relative; overflow:auto; border-radius: 25px; border:medium; border-color:black; width:85%; min-height:200px; background-color:#FFE7C7; margin-left:2%;\">" +
                     //"<span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\" style=\"margin-left:1%; margin-right:5%; margin-top:1%;\"></span>" +
                     "<br />";
 
@@ -87,7 +92,7 @@
                 else
                 {
                     html = "<br />" +
-                    "<div style=\"overflow:auto; border-radius: 25px; border:medium; border-color:black; width:85%; min-height:200px; background-color:azure; margin-left:auto; margin-right:2%;\" align=\"right\">" +
+                    "<div style=\"overflow:auto; border-radius: 25px; border:medium; border-color:black; width:85%; min-height:200px; background-color:#FFE7C7; margin-left:auto; margin-right:2%;\" align=\"right\">" +
                     //"<span class=\"glyphicon glyphicon-asterisk\" aria-hidden=\"true\" style=\"margin-left:5%; margin-right:1%; margin-top:1%;\"></span>" +
                     "<br />";
 
@@ -108,6 +113,7 @@
                 "</div>";
                     side = true;
                 }
+                titles.Add(item.Title);
                 Response.Write(html);
             }
         }

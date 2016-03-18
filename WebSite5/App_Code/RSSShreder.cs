@@ -43,7 +43,7 @@ public class RSSShreder
             catch
             {
                 reg = new Regex(dayReg + "\\s" + monthReg + "\\s" + yearReg);
-                output = reg.Match(output).ToString();
+                output = reg.Match(date).ToString();
                 time = DateTime.Parse(output);
             }
             time=time.Add(new TimeSpan(timeOffSet, 0,0));

@@ -13,4 +13,6 @@ public class RedditPost
     public string PostTitle = "";
     public string PostUrl = "";
     public string PostContent = "";
+    public string Image = "";
+    public DateTime PostDate = new DateTime();
 }
